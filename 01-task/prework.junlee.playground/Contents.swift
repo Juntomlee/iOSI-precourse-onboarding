@@ -115,21 +115,21 @@ if value == 1{
 
 // We can use 'if' in combination with 'else' to perform either one operation or another:
 
-if 1 > 0 {
-    print("Phew, our math was right!")
-} else {
-    print("Something is wrong with the world...")
-}
+//if 1 > 0 {
+//    print("Phew, our math was right!")
+//} else {
+//    print("Something is wrong with the world...")
+//}
 
 // Try using an 'else' statement without an 'if' statement. What happens? (Make sure to comment that out after you're done so the rest of the playground will run appropriately!)
 
 // You can also combine statements with the 'else if' statement:
 
-if 1 > 0 {
-    print("Phew, our math was right!")
-} else if 1 < 0 {
-    print("Hmm, something went wrong!")
-}
+//if 1 > 0 {
+//    print("Phew, our math was right!")
+//} else if 1 < 0 {
+//    print("Hmm, something went wrong!")
+//}
 
 // You can chain together as many 'if', 'else if' and 'else' statements as you'd like. Just remember, an 'else' statement MUST be preceded by an 'if' statement.
 
@@ -151,7 +151,7 @@ print("Can drive? : \(canDrive), Can vote? : \(canVote), Can drink? : \(canDrink
 
 
 // TODO: When you're done, set it equal to 18. Do this with only 'if' statements (do not use 'else' or 'else if').
-age = 18
+age = 19
 
 if age > 20{
     canDrink = true
@@ -337,14 +337,14 @@ class MyTests : XCTestCase {
 }
 
 struct TestRunner {
-    func runTests(testClass:XCTestCase) {
+    func runTests(testClass:AnyClass) {
         let tests = testClass as! XCTestCase.Type
-        let testSuite = testClass.defaultTestSuite()
+        let testSuite = tests.defaultTestSuite()
         testSuite.run()
         let run = testSuite.testRun as! XCTestSuiteRun
         
-        //print("\(run.totalFailureCount) failures")
+        print("\(run.totalFailureCount) failures")
     }
 }
 
-TestRunner().runTests(testClass: MyTests())
+TestRunner().runTests(testClass:MyTests.self)
